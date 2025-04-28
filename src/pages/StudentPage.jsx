@@ -45,18 +45,19 @@ const availableCourses = [
 ];
 
 function StudentPage() {
+  console.log(availableCourses);
   const [studentCourses, setStudentCourses] = useState([]);
   const navigate = useNavigate();
 
   const addCourse = (course) => {
     if (!studentCourses.find((c) => c.id === course.id)) {
       setStudentCourses([...studentCourses, course]);
-        // Modify the JSON object
-        jsonData.String(id) = true;
+      // Modify the JSON object
+      jsonData.String(id) = true;
 
-        // Write the updated JSON back to the file
-        fs.writeFileSync('classes.json', JSON.stringify(jsonData, null, 2));
-        console.log('JSON file updated successfully!');
+      // Write the updated JSON back to the file
+      fs.writeFileSync('classes.json', JSON.stringify(jsonData, null, 2));
+      console.log('JSON file updated successfully!');
     }
   };
 
