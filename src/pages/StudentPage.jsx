@@ -45,7 +45,6 @@ const availableCourses = [
 ];
 
 function StudentPage() {
-  console.log(availableCourses);
   const [studentCourses, setStudentCourses] = useState([]);
   const navigate = useNavigate();
 
