@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const fs = require('fs');
+
+try {
+  // Read the JSON file
+  const data = fs.readFileSync('classes.json', 'utf8');
+  const jsonData = JSON.parse(data);
+} catch (err) {
+  console.error('Error:', err);
+}
+
 const availableCourses = [
   {
     id: 1,
@@ -41,6 +51,12 @@ function StudentPage() {
   const addCourse = (course) => {
     if (!studentCourses.find((c) => c.id === course.id)) {
       setStudentCourses([...studentCourses, course]);
+        // Modify the JSON object
+        jsonData.String(id) = true;
+
+        // Write the updated JSON back to the file
+        fs.writeFileSync('classes.json', JSON.stringify(jsonData, null, 2));
+        console.log('JSON file updated successfully!');
     }
   };
 
