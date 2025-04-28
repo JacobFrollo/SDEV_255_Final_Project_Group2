@@ -47,8 +47,8 @@ function StudentPage() {
         ...prevData,
         String(course.id): "True",
       }));
-      console.log(course.id);
     }
+    console.log(course.id);
   };
 
   const dropCourse = (id) => {
