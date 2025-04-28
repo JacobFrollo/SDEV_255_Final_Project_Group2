@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import jsonData from './classes.json'; // Assuming you have a data.json file
 
 const availableCourses = [
   {
@@ -36,11 +37,17 @@ const availableCourses = [
 
 function StudentPage() {
   const [studentCourses, setStudentCourses] = useState([]);
+  const [data, setData] = useState(jsonData);
   const navigate = useNavigate();
 
   const addCourse = (course) => {
     if (!studentCourses.find((c) => c.id === course.id)) {
       setStudentCourses([...studentCourses, course]);
+      setData((prevData) => ({
+        ...prevData,
+        String(course.id): "True",
+      }));
+      console.log(course.id);
     }
   };
 
